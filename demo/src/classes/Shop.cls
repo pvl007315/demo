@@ -103,4 +103,10 @@ public with sharing class Shop {
 		}
 		return NULL;
 	}
+
+	public PageReference Transfer() {
+		pageReference newPage = page.ShopBasket;
+		newPage.getParameters().put('basketItems', JSON.serialize(addShop));
+		return newPage;
+	}
 }
