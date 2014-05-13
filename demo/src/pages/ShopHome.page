@@ -1,0 +1,44 @@
+<apex:page controller="Shop">
+    <apex:form >
+        <apex:pageMessages id="msg" />
+        <apex:pageBlock >
+            <apex:outputText >Select category: </apex:outputText>
+            <apex:selectList value="{!category}" size="1">
+                <apex:selectOptions value="{!pickListValues}" />
+                <apex:actionSupport action="{!isResult}" event="onchange" reRender="itemTable, NotResult"/>
+            </apex:selectList><br/><br/>
+            
+            <apex:outputPanel id="itemTable">
+                <apex:outputPanel rendered="{!isResultNotEmpty}">
+                    <apex:pageBlockTable value="{!result}" var="item" >
+                        <apex:inlineeditSupport />
+                        <apex:column headerValue="Select">
+                            <apex:inputcheckbox value="{!item.isSelected}">
+                                <apex:actionSupport event="onclick" action="{!getSelected}" reRender="s"/>
+                            </apex:inputcheckbox>
+                            
+                        </apex:column>
+                        <apex:column headerValue="Name" value="{!item.shop.Name}"/>
+                        <apex:column headerValue="Information" value="{!item.shop.Info__c}"/>
+                    </apex:pageBlockTable><br/>
+                    <apex:commandButton value="Add" action="{!Add}" reRender="msg, Added"/>
+                </apex:outputPanel>    
+            </apex:outputPanel><br/><br/>
+            
+            <apex:outputPanel id="NotResult">
+                <apex:outputPanel rendered="{!isResultNotEmpty == false}">
+                    <apex:outputText > <h1>Category is empty</h1></apex:outputText>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="Added">
+                <apex:outputPanel rendered="{!isAdd}">
+                   <apex:repeat value="{!addShop}" var="s">
+                       <apex:outputText > {!s.Name}</apex:outputText><br/>
+                   </apex:repeat>
+                   {!selectedItem}
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
