@@ -1,3 +1,20 @@
-<apex:page controller="ShopBasket">
-	{!getBasketList}
+<apex:page controller="ShopBasket" showHeader="false">
+	<style type="text/css">
+		body {
+			background-color:#D3D3D3;
+		}
+	</style>
+	<div style="width:1000px; margin: 0 auto; padding: 10px;">
+		<p style="font-size:25px; color:#AAAA; text-align:center;"> TEST BASKET PAGE </p>
+		<apex:form >
+			<apex:pageBlock >
+				<apex:pageBlockTable value="{!basketList}" var="list">
+					<apex:column headerValue="Name" value="{!list.Name}" />
+					<apex:column headerValue="Category" value="{!list.Category__c}" />
+					<apex:column headerValue="Information" value="{!list.Info__c}" />
+				</apex:pageBlockTable>
+
+			</apex:pageBlock>
+		</apex:form>
+	</div>
 </apex:page>

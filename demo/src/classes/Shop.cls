@@ -78,7 +78,7 @@ public with sharing class Shop {
 			isAdd = true;
 			Boolean isItem ;
 			for (Shop__c c: selecteditem) {
-				isItem = true;
+				isItem = false;
 				if (addShop.isEmpty()) {
 					addShop.add(c);
 					itemCount++;

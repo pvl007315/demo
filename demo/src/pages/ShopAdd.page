@@ -1,18 +1,26 @@
-<apex:page controller="ShopAdd">
-    <apex:form >
-        <apex:pageMessages id="msg" />
-        <apex:pageBlock title="Add product" >
-        <apex:pageBlockSection >
-            <apex:inputtext id="Name" value="{!NewShopItem.Name}"/><br/>
-            <apex:inputTextarea id="Info" value="{!newShopItem.Info__c}"/><br/>
-            <apex:inputField id="Category" value="{!newShopItem.Category__c}"/><br/>
-            <apex:commandButton value="Add product" action="{!saveItem}" reRender="msg, result"/>
-        </apex:pageBlockSection>   
-            <apex:outputpanel id="result">
-                <apex:outputpanel rendered="{!isInsert}">
-                    <apex:outputText >Insert successful</apex:outputText>
+<apex:page controller="ShopAdd" showHeader="false">
+    <style type="text/css">
+        body {
+            background-color:#D3D3D3;
+        }
+    </style>
+    <div style="width:1000px; margin: 0 auto; padding: 10px;">
+        <p style="font-size:25px; color:#AAAA; text-align:center;"> ADD ITEM FOR SHOP </p>
+        <apex:form >
+            <apex:pageMessages id="msg" />
+            <apex:pageBlock title="Add product" >
+            <apex:pageBlockSection >
+                <apex:inputtext id="Name" value="{!NewShopItem.Name}"/><br/>
+                <apex:inputTextarea id="Info" value="{!newShopItem.Info__c}"/><br/>
+                <apex:inputField id="Category" value="{!newShopItem.Category__c}"/><br/>
+                <apex:commandButton value="Add product" action="{!saveItem}" reRender="msg, result"/>
+            </apex:pageBlockSection>   
+                <apex:outputpanel id="result">
+                    <apex:outputpanel rendered="{!isInsert}">
+                        <apex:outputText >Insert successful</apex:outputText>
+                    </apex:outputpanel>
                 </apex:outputpanel>
-            </apex:outputpanel>
-        </apex:pageBlock>
-    </apex:form>
+            </apex:pageBlock>
+        </apex:form>
+    </div>    
 </apex:page>

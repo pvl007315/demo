@@ -3,10 +3,12 @@
     <types>
         <members>Shop</members>
         <members>ShopAdd</members>
+        <members>ShopBasket</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>ShopAdd</members>
+        <members>ShopBasket</members>
         <members>ShopHome</members>
         <name>ApexPage</name>
     </types>
